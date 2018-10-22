@@ -1,9 +1,9 @@
 <template>
   <div class="overlay" >
-    <div class="close">x</div>
+    <router-link to="/form" tag="div"><div class="close">x</div></router-link>
     <form >
 
-      <div>registration form</div>
+      <div class="title">registration form</div>
 
       <div class="wrap">
         <label for="email">email:</label>
@@ -141,12 +141,28 @@ export default {
   align-items: center;
   color: white;
 }
+.title{
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
 .close{
   position: absolute;
-  top: 10%;
-  right: 5%;
+  top: 5%;
+  right: 2%;
   border-radius: 50%;
-  padding: 20px;
+  border: 1px solid white;
+  width: 35px;
+  height: 35px;
+  line-height: 33px;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all .4s;
+}
+.close:hover{
+  border: 1px solid #FF6149;
+  color: #FF6149;
 }
 form{
   width: 500px;
@@ -160,6 +176,7 @@ form{
 label{
   color: white;
   text-transform: capitalize;
+  cursor: pointer;
 }
 .input-wrap{
   height: 40px;
@@ -219,5 +236,12 @@ button{
   border-radius: 20px;
   text-transform: uppercase;
   font-weight: 700;
+  cursor: pointer;
+  transition: all .3s;
+}
+button:hover{
+  border: 1px solid white;
+  background: hsla(236, 23%, 50%, 1);
+  color: white;
 }
 </style>
