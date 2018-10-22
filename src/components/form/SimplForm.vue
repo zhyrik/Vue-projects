@@ -1,6 +1,6 @@
 <template>
   <main class="wrap">
-    <form @submit.prevent="onSubmit" v-if="flag">
+    <form @submit.prevent="sendToServer" v-if="flag">
       <label for="email">Email</label>
       <input
         type="text"
@@ -112,6 +112,8 @@
 
 <script>
 import { required, email, minLength, sameAs, numeric } from 'vuelidate/lib/validators'
+import * as fb from 'firebase'
+
 export default {
   data () {
     return {
@@ -169,6 +171,14 @@ export default {
     },
     deleteGest (gest) {
       this.$delete(this.gests, gest)
+    },
+    async sendToServer () {
+      try {
+        let base = await fb.database().ref('form').push(this.lists)
+        console.log(base)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }

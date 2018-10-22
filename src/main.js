@@ -5,8 +5,10 @@ import App from './App'
 import Vuelidate from 'vuelidate'
 import router from './router'
 import * as fb from 'firebase'
+import vuex from 'vuex'
 
 Vue.use(Vuelidate)
+Vue.use(vuex)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -24,5 +26,6 @@ new Vue({
       storageBucket: 'my-vue-project-b16ed.appspot.com',
       messagingSenderId: '308678990078'
     })
+    console.log(fb)
   }
 })

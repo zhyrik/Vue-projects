@@ -10,10 +10,6 @@ import English from '@/components/english/Main'
 import Catch from '@/components/games/catch/Main'
 import Piramid from '@/components/games/piramid/Logik'
 
-import Shpora from '@/components/Shpora/Shpora'
-import Css from '@/components/Shpora/Css'
-import Git from '@/components/Shpora/Git'
-
 Vue.use(Router)
 
 export default new Router({
@@ -62,21 +58,6 @@ export default new Router({
       path: '/piramid',
       name: 'Piramid',
       component: Piramid
-    },
-    {
-      path: '/shpora',
-      name: 'Shpora',
-      component: Shpora,
-      children: [
-        {
-          path: 'css',
-          component: Css
-        },
-        {
-          path: 'git',
-          component: Git
-        }
-      ]
     }
   ],
   mode: 'history'
