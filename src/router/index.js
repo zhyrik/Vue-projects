@@ -3,7 +3,11 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import MonsterGame from '@/components/monsterGame/MonsterGame'
 import Qoute from '@/components/quote/Main'
-import Form from '@/components/form/SimplForm'
+
+import Form from '@/components/form/Forms'
+import Register from '@/components/form/Registration'
+import Gests from '@/components/form/SimplForm'
+
 import Minesweeper from '@/components/minesweeper/Field'
 import Keyboard from '@/components/keyboard/Typing'
 import English from '@/components/english/Main'
@@ -32,7 +36,17 @@ export default new Router({
     {
       path: '/form',
       name: 'Form',
-      component: Form
+      component: Form,
+      children: [
+        {
+          path: 'register',
+          component: Register
+        },
+        {
+          path: 'gests',
+          component: Gests
+        }
+      ]
     },
     {
       path: '/minesweeper',

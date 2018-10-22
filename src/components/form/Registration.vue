@@ -1,13 +1,22 @@
 <template>
-  <div>
-    
+  <div calss="overlay" >
+    <div class="inpur-wrap">
+      <input type="text">
+      <span>@</span>
+      <div class="check"></div>
+    </div>
   </div>
 </template>
 
 <script>
-  
+export default {
+
+}
 </script>
 
-<style scoped>
+<style>
+.overlay{
+  background-color: red;
+}
 
 </style>
