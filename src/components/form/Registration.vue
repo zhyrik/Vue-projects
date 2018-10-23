@@ -1,7 +1,7 @@
 <template>
   <div class="overlay" >
     <router-link to="/form" tag="div"><div class="close">x</div></router-link>
-    <form >
+    <form @submit.prevent="onSubmit">
 
       <div class="title">registration form</div>
 
@@ -16,7 +16,7 @@
           >
           <span>@</span>
           <template v-if="$v.email.$dirty">
-            <div v-if="emailStyle" class="check check-corect">	&#10003;</div>
+            <div v-if="emailStyle" class="check check-corect">&#10003;</div>
             <div v-else class="check check-error">X</div>
           </template>
         </div>
@@ -33,7 +33,7 @@
           >
           <span>***</span>
           <template v-if="$v.password.$dirty">
-            <div v-if="passwordStyle" class="check check-corect">	&#10003;</div>
+            <div v-if="passwordStyle" class="check check-corect">&#10003;</div>
             <div v-else class="check check-error">X</div>
           </template>
         </div>
@@ -50,15 +50,18 @@
           >
           <span>***</span>
           <template v-if="$v.checkPassword.$dirty">
-            <div v-if="checkPasswordStyel" class="check check-corect">	&#10003;</div>
+            <div v-if="checkPasswordStyel" class="check check-corect">&#10003;</div>
             <div v-else class="check check-error">X</div>
           </template>
         </div>
       </div>
 
-      <div class="wrap" @click="check">
+      <div class="wrap">
         <div></div>
-        <button>register</button>
+        <button
+          :class="{'check-error': loading}"
+          :disabled="loading"
+        >register</button>
       </div>
 
     </form>
@@ -66,16 +69,11 @@
 </template>
 
 <script>
-import { required, email, minLength, sameAs} from 'vuelidate/lib/validators'
-import * as fb from 'firebase'
+import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 
 export default {
   data () {
     return {
-      flags: {
-        email: true,
-        password: true
-      },
       email: '',
       password: '',
       checkPassword: ''
@@ -96,12 +94,25 @@ export default {
     }
   },
   methods: {
-    check () {
-      console.log(this.$v.password.minLength, this.$v.password.required)
+    onSubmit () {
+      if (this.emailStyle && this.checkPasswordStyel) {
+        const user = {
+          email: this.email,
+          password: this.password
+        }
+        this.$store.dispatch('registerUser', user)
+          .then(() => {
+            this.$router.push('/')
+          })
+          .catch(error => console.log(error))
+      }
     }
   },
   computed: {
-    emailStyle (){
+    loading () {
+      return this.$store.getters.loading
+    },
+    emailStyle () {
       if (this.$v.email.email && this.$v.email.required) {
         return true
       } else {
@@ -117,17 +128,15 @@ export default {
     },
     checkPasswordStyel () {
       if (this.$v.checkPassword.sameAsPassword && this.$v.checkPassword.required) {
-        console.log(this.$v.checkPassword.sameAsPassword, this.$v.checkPassword.required)
         return true
       } else {
-        console.log(2, this.$v.checkPassword.sameAsPassword, this.$v.checkPassword.required)
         return false
       }
     }
   }
 }
 </script>
-123456789q
+
 <style scoped>
 .overlay{
   position: fixed;
@@ -226,6 +235,7 @@ input{
   font-size: 16px;
 }
 button{
+  outline: none;
   height: 40px;
   width: 150px;
   padding: 0 20px;

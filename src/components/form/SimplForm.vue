@@ -112,7 +112,6 @@
 
 <script>
 import { required, email, minLength, sameAs, numeric } from 'vuelidate/lib/validators'
-import * as fb from 'firebase'
 
 export default {
   data () {
@@ -171,14 +170,6 @@ export default {
     },
     deleteGest (gest) {
       this.$delete(this.gests, gest)
-    },
-    async sendToServer () {
-      try {
-        let base = await fb.database().ref('form').push(this.lists)
-        console.log(base)
-      } catch (error) {
-        console.log(error)
-      }
     }
   }
 }
