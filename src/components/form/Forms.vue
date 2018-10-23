@@ -2,6 +2,7 @@
   <div>
     <router-link to="/form/gests" tag="button">Gests</router-link>
     <router-link to="/form/register" tag="button">Register</router-link>
+    <router-link to="/form/login" tag="button">Login</router-link>
     <router-view></router-view>
   </div>
 </template>

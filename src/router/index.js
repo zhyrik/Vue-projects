@@ -6,6 +6,7 @@ import Qoute from '@/components/quote/Main'
 
 import Form from '@/components/form/Forms'
 import Register from '@/components/form/Registration'
+import Login from '@/components/form/Login'
 import Gests from '@/components/form/SimplForm'
 
 import Minesweeper from '@/components/minesweeper/Field'
@@ -41,6 +42,10 @@ export default new Router({
         {
           path: 'register',
           component: Register
+        },
+        {
+          path: 'login',
+          component: Login
         },
         {
           path: 'gests',
