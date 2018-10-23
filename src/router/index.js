@@ -14,6 +14,7 @@ import Keyboard from '@/components/keyboard/Typing'
 import English from '@/components/english/Main'
 import Catch from '@/components/games/catch/Main'
 import Piramid from '@/components/games/piramid/Logik'
+import BollGame from '@/components/games/bollGame/BollGame'
 
 Vue.use(Router)
 
@@ -77,6 +78,11 @@ export default new Router({
       path: '/piramid',
       name: 'Piramid',
       component: Piramid
+    },
+    {
+      path: '/boll',
+      name: 'BollGame',
+      component: BollGame
     }
   ],
   mode: 'history'
