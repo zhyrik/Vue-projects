@@ -78,11 +78,6 @@ export default new Router({
       path: '/piramid',
       name: 'Piramid',
       component: Piramid
-    },
-    {
-      path: '/boll',
-      name: 'BollGame',
-      component: BollGame
     }
   ],
   mode: 'history'
