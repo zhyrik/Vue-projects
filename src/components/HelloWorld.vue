@@ -9,7 +9,6 @@
     <router-link :to="'/catch'">Catch</router-link>
     <router-link :to="'/minesweeper'">Minesweeper</router-link>
     <router-link :to="'/monster'">Monster</router-link>
-    <router-link :to="'/boll'">boll</router-link>
   </div>
 </template>
 

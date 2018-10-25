@@ -13,8 +13,6 @@ import Minesweeper from '@/components/minesweeper/Field'
 import Keyboard from '@/components/keyboard/Typing'
 import English from '@/components/english/Main'
 import Catch from '@/components/games/catch/Main'
-import Piramid from '@/components/games/piramid/Logik'
-import BollGame from '@/components/games/bollGame/BollGame'
 
 Vue.use(Router)
 
@@ -73,11 +71,6 @@ export default new Router({
       path: '/catch',
       name: 'Catch',
       component: Catch
-    },
-    {
-      path: '/piramid',
-      name: 'Piramid',
-      component: Piramid
     }
   ],
   mode: 'history'

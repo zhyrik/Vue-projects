@@ -63,7 +63,7 @@ export default {
       return Math.floor(Math.random() * max)
     },
     check (index, event) {
-      if (this.rand === index.toString()) {
+      if (this.rand.toString() === index.toString()) {
         event.target.classList += ' green'
         setTimeout(() => {
           this.lottery()
@@ -72,6 +72,7 @@ export default {
           }
         }, 1000)
       } else {
+        console.log(this.rand, index)
         event.target.classList += ' red'
       }
     }
