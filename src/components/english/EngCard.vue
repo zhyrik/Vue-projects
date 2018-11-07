@@ -72,7 +72,6 @@ export default {
           }
         }, 1000)
       } else {
-        console.log(this.rand, index)
         event.target.classList += ' red'
       }
     }
